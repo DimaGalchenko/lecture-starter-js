@@ -2,12 +2,29 @@
   display: flex;
   flex-direction: column;
   flex-basis: 250px;
+  align-items: center;
+  justify-content: center;
 }
 
 .fighter-preview___right {
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
 }
 
 .fighter-preview___left {
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fighter-preview___info-container {
+  color: #ca9650;
+  border: 5px solid #ca9650;
+  background: #ffdfa7;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.fighter-preview___img {
+  height: 250px;
 }
