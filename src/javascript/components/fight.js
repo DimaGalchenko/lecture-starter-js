@@ -8,9 +8,6 @@ export function getHitPower(fighter) {
 
 export function getBlockPower(fighter) {
     // return block power
-    if (!fighter.isBlocked) {
-        return 0;
-    }
     const dodgeChance = Math.random() + 1;
     return fighter.defense * dodgeChance;
 }
@@ -59,8 +56,11 @@ export async function fight(firstFighter, secondFighter) {
         }
 
         function handleAttack(attacker, defender, isCritical = false) {
+            if (attacker.isBlocked) {
+                return;
+            }
             const damage = isCritical ? getCriticalDamage(attacker) : getDamage(attacker, defender);
-            if (damage !== 0) {
+            if (damage !== 0 && !defender.isBlocked) {
                 const healthPointsPerPercentage = defender.health / 100;
                 const damageInPercentage = damage / healthPointsPerPercentage;
                 if (defender.currentHealth - damageInPercentage <= 0) {
